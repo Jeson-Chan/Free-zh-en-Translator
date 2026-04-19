@@ -400,6 +400,8 @@ class FloatingTranslatorWindow(QWidget):
             f"""
             QWidget#mainWindow {{
                 background-color: #E8E2D9;
+                border: 1px solid #B79F90;
+                border-radius: 24px;
             }}
             QFrame#headerFrame {{
                 background: transparent;
@@ -484,8 +486,9 @@ class FloatingTranslatorWindow(QWidget):
                 background-color: #3E2B1F;
                 border-radius: 18px;
                 color: #F0EBE4;
-                font-family: Segoe UI, Arial, sans-serif;
+                font-family: Georgia, 'Times New Roman', serif;
                 font-size: 13px;
+                font-weight: 600;
                 padding: 10px 14px;
             }}
             QLabel#statusToast[error="true"] {{
@@ -562,8 +565,6 @@ class FloatingTranslatorWindow(QWidget):
         swap_row.addStretch()
 
         self._translate_button.setObjectName("primaryButton")
-        self._translate_button.setIcon(create_line_icon("translate", "#F0EBE4"))
-        self._translate_button.setIconSize(QSize(18, 18))
         self._translate_button.clicked.connect(self._start_translation)
 
         result_card = self._build_result_card()
