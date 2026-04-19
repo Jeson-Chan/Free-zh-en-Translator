@@ -1,0 +1,6 @@
+2026-04-19 20:46:29,393 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 20:48:07,999 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh
+2026-04-19 20:56:47,487 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 21:01:49,181 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 21:02:00,783 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh
+2026-04-19 21:02:35,882 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh

@@ -32,7 +32,7 @@ class ConfigManager:
             return AppConfig()
 
         try:
-            payload = json.loads(self._config_path.read_text(encoding="utf-8"))
+            payload = json.loads(self._config_path.read_text(encoding="utf-8-sig"))
         except json.JSONDecodeError as exc:
             raise ConfigurationError(
                 f"Invalid JSON in config file: {self._config_path}"
@@ -58,4 +58,3 @@ class ConfigManager:
             raise ConfigurationError(
                 f"Could not write config file: {self._config_path}"
             ) from exc
-
