@@ -66,3 +66,11 @@ class HistoryManager:
                 f"Could not write history file: {self._history_path}"
             ) from exc
 
+    def clear_entries(self) -> None:
+        """Remove all persisted history entries."""
+        try:
+            self._history_path.write_text("[]", encoding="utf-8")
+        except OSError as exc:
+            raise HistoryError(
+                f"Could not clear history file: {self._history_path}"
+            ) from exc

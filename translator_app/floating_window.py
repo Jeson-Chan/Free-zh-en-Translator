@@ -88,6 +88,9 @@ def create_line_icon(name: str, color: str) -> QIcon:
     elif name == "copy":
         painter.drawRoundedRect(8, 6, 10, 12, 2, 2)
         painter.drawRoundedRect(5, 9, 10, 12, 2, 2)
+    elif name == "clear":
+        painter.drawLine(7, 7, 17, 17)
+        painter.drawLine(17, 7, 7, 17)
     elif name == "swap":
         painter.drawLine(6, 9, 16, 9)
         painter.drawLine(13, 6, 16, 9)
@@ -237,9 +240,16 @@ class HistoryCard(QFrame):
 class HistoryDialog(QDialog):
     """Display recent translation history in a card layout."""
 
-    def __init__(self, entries: list[HistoryEntry], parent: QWidget | None = None) -> None:
+    def __init__(
+        self,
+        entries: list[HistoryEntry],
+        history_manager: HistoryManager,
+        parent: QWidget | None = None,
+    ) -> None:
         """Render the recent history using themed cards."""
         super().__init__(parent)
+        self._entries = entries
+        self._history_manager = history_manager
         self._fade_animation = QPropertyAnimation(self, b"windowOpacity")
         self.setWindowTitle("History")
         self.resize(620, 680)
@@ -259,6 +269,19 @@ class HistoryDialog(QDialog):
                 color: #8C7B6E;
                 font-family: Georgia, 'Times New Roman', serif;
                 font-size: 13px;
+            }}
+            QPushButton#historyActionButton {{
+                background-color: #D4CCC4;
+                border: none;
+                border-radius: 18px;
+                color: #5C3D2B;
+                font-family: Georgia, 'Times New Roman', serif;
+                font-size: 13px;
+                font-weight: 600;
+                padding: 10px 16px;
+            }}
+            QPushButton#historyActionButton:hover {{
+                background-color: #C9C0B7;
             }}
             QFrame#historyCard {{
                 background-color: #F0EBE4;
@@ -308,23 +331,41 @@ class HistoryDialog(QDialog):
         subtitle_label = QLabel("Review your recent translations, styles, and direction changes.")
         subtitle_label.setObjectName("dialogSubtitle")
 
-        scroll_area = QScrollArea()
-        scroll_area.setWidgetResizable(True)
-        scroll_area.setFrameShape(QFrame.NoFrame)
+        title_row = QHBoxLayout()
+        title_block = QVBoxLayout()
+        title_block.setContentsMargins(0, 0, 0, 0)
+        title_block.setSpacing(4)
+        title_block.addWidget(title_label)
+        title_block.addWidget(subtitle_label)
 
-        content_widget = QWidget()
-        content_layout = QVBoxLayout()
-        content_layout.setContentsMargins(0, 0, 0, 0)
-        content_layout.setSpacing(14)
-        for entry in entries:
-            content_layout.addWidget(HistoryCard(entry))
-        content_layout.addStretch()
-        content_widget.setLayout(content_layout)
-        scroll_area.setWidget(content_widget)
+        clear_history_button = QPushButton("Clear History")
+        clear_history_button.setObjectName("historyActionButton")
+        clear_history_button.setIcon(create_line_icon("clear", ICON_COLOR))
+        clear_history_button.setIconSize(QSize(16, 16))
+        clear_history_button.clicked.connect(self._clear_history)
 
-        root_layout.addWidget(title_label)
-        root_layout.addWidget(subtitle_label)
-        root_layout.addWidget(scroll_area, stretch=1)
+        title_row.addLayout(title_block)
+        title_row.addStretch()
+        title_row.addWidget(clear_history_button)
+
+        self._scroll_area = QScrollArea()
+        self._scroll_area.setWidgetResizable(True)
+        self._scroll_area.setFrameShape(QFrame.NoFrame)
+        self._content_widget = QWidget()
+        self._content_layout = QVBoxLayout()
+        self._content_layout.setContentsMargins(0, 0, 0, 0)
+        self._content_layout.setSpacing(14)
+        self._content_widget.setLayout(self._content_layout)
+        self._scroll_area.setWidget(self._content_widget)
+        self._empty_label = QLabel("No translations have been saved yet.")
+        self._empty_label.setObjectName("dialogSubtitle")
+        self._empty_label.setAlignment(Qt.AlignCenter)
+        self._empty_label.hide()
+        self._rebuild_entries()
+
+        root_layout.addLayout(title_row)
+        root_layout.addWidget(self._empty_label)
+        root_layout.addWidget(self._scroll_area, stretch=1)
         self.setLayout(root_layout)
 
     def showEvent(self, event) -> None:  # type: ignore[override]
@@ -337,6 +378,36 @@ class HistoryDialog(QDialog):
         self._fade_animation.setEasingCurve(QEasingCurve.OutCubic)
         self._fade_animation.start()
         super().showEvent(event)
+
+    def _rebuild_entries(self) -> None:
+        """Refresh the card list from the current entry snapshot."""
+        while self._content_layout.count():
+            item = self._content_layout.takeAt(0)
+            widget = item.widget()
+            if widget is not None:
+                widget.deleteLater()
+
+        if not self._entries:
+            self._empty_label.show()
+            self._scroll_area.hide()
+            return
+
+        self._empty_label.hide()
+        self._scroll_area.show()
+        for entry in self._entries:
+            self._content_layout.addWidget(HistoryCard(entry))
+        self._content_layout.addStretch()
+
+    def _clear_history(self) -> None:
+        """Clear persisted history and refresh the popup content."""
+        try:
+            self._history_manager.clear_entries()
+        except HistoryError as exc:
+            QMessageBox.warning(self, "History Error", str(exc))
+            return
+
+        self._entries = []
+        self._rebuild_entries()
 
 
 class FloatingTranslatorWindow(QWidget):
@@ -604,6 +675,12 @@ class FloatingTranslatorWindow(QWidget):
         section_label = QLabel("SOURCE TEXT")
         section_label.setObjectName("sectionLabel")
 
+        clear_button = QPushButton("Clear")
+        clear_button.setObjectName("secondaryButton")
+        clear_button.setIcon(create_line_icon("clear", ICON_COLOR))
+        clear_button.setIconSize(QSize(16, 16))
+        clear_button.clicked.connect(self._clear_input_box)
+
         paste_button = QPushButton("Paste")
         paste_button.setObjectName("secondaryButton")
         paste_button.setIcon(create_line_icon("paste", ICON_COLOR))
@@ -612,6 +689,7 @@ class FloatingTranslatorWindow(QWidget):
 
         header_row.addWidget(section_label)
         header_row.addStretch()
+        header_row.addWidget(clear_button)
         header_row.addWidget(paste_button)
 
         self._input_box.setObjectName("sourceBox")
@@ -790,6 +868,11 @@ class FloatingTranslatorWindow(QWidget):
         self._input_box.setPlainText(clipboard_text)
         self._show_status("Clipboard content pasted.", is_error=False)
 
+    def _clear_input_box(self) -> None:
+        """Clear only the source input area."""
+        self._input_box.clear()
+        self._show_status("Input text cleared.", is_error=False)
+
     def _copy_result(self) -> None:
         """Copy the current result text using the copy button."""
         result_text = self._result_box.toPlainText().strip()
@@ -905,7 +988,7 @@ class FloatingTranslatorWindow(QWidget):
             self._set_active_nav("translate")
             return
 
-        HistoryDialog(entries, self).exec_()
+        HistoryDialog(entries, self._history_manager, self).exec_()
         self._set_active_nav("translate")
 
     def _show_status(self, message: str, is_error: bool) -> None:

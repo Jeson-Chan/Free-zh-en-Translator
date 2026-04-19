@@ -1,56 +1,8 @@
 [
   {
-    "timestamp": "2026-04-19T22:45:09",
-    "source_text": "dog",
-    "translated_text": "犬",
-    "source_language": "en",
-    "target_language": "zh",
-    "style": "academic"
-  },
-  {
-    "timestamp": "2026-04-19T22:25:51",
-    "source_text": "你好",
-    "translated_text": "Hello",
-    "source_language": "zh",
-    "target_language": "en",
-    "style": "casual"
-  },
-  {
-    "timestamp": "2026-04-19T22:25:45",
-    "source_text": "你好",
-    "translated_text": "Greetings.",
-    "source_language": "zh",
-    "target_language": "en",
-    "style": "academic"
-  },
-  {
-    "timestamp": "2026-04-19T22:25:13",
-    "source_text": "Digital video inpainting techniques have been substantially improved with deep learning in recent years.",
-    "translated_text": "近年来，深度学习技术显著推动了数字视频修复方法的实质性进展。",
-    "source_language": "en",
-    "target_language": "zh",
-    "style": "academic"
-  },
-  {
-    "timestamp": "2026-04-19T21:50:37",
-    "source_text": "Dog",
-    "translated_text": "狗",
-    "source_language": "en",
-    "target_language": "zh",
-    "style": "academic"
-  },
-  {
-    "timestamp": "2026-04-19T21:02:38",
-    "source_text": "As shown in Fig. 1, key objects can be easily removed by the latest DL-based inpainting algorithms. Therefore, it is necessary to develop reliable forensic methods for identifying the inpainted regions in a video.",
-    "translated_text": "如图1所示，关键目标能够被最新的基于深度学习的修复算法轻易移除。因此，有必要开发可靠的取证方法来识别视频中的修复区域。",
-    "source_language": "en",
-    "target_language": "zh",
-    "style": "academic"
-  },
-  {
-    "timestamp": "2026-04-19T21:02:03",
-    "source_text": "DeepSeek API key is still the placeholder value. Pleaseupdate config.json or Settings.",
-    "translated_text": "DeepSeek API密钥仍为占位符值。请更新config.json文件或设置。",
+    "timestamp": "2026-04-19T23:53:12",
+    "source_text": "Abstract—Digital video inpainting techniques have been substantially improved with deep learning in recent years. Deep inpainting can fill missing regions with plausible realistic contents. Although the inpainting is originally designed to repair damaged areas, it can also be used as malicious manipulation to remove important objects for creating false scenes and facts. As such it is significant to identify inpainted regions blindly.",
+    "translated_text": "摘要——近年来，深度学习技术显著推动了数字视频修复方法的发展。深度修复能够以合理的逼真内容填充缺失区域。尽管修复技术最初旨在修复受损区域，但其同样可被恶意用于移除关键物体以伪造场景与事实。因此，对修复区域进行盲检测具有重要研究意义。",
     "source_language": "en",
     "target_language": "zh",
     "style": "academic"

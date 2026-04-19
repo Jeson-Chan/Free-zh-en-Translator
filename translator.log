@@ -17,3 +17,12 @@
 2026-04-19 23:16:35,500 | INFO | __main__ | Starting Academic Floating Translator
 2026-04-19 23:27:35,846 | INFO | __main__ | Starting Academic Floating Translator
 2026-04-19 23:37:45,979 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 23:41:08,018 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 23:41:56,478 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh style=academic
+2026-04-19 23:43:06,929 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=zh target=en style=academic
+2026-04-19 23:43:18,246 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh style=academic
+2026-04-19 23:43:44,897 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh style=academic
+2026-04-19 23:46:10,992 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 23:52:16,469 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 23:52:50,945 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh style=academic
+2026-04-19 23:53:09,204 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh style=academic
