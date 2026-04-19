@@ -19,16 +19,20 @@ class TranslationWorker(QThread):
     succeeded = pyqtSignal(object)
     failed = pyqtSignal(str)
 
-    def __init__(self, service: TranslationService, text: str) -> None:
-        """Store the service dependency and input text."""
+    def __init__(self, service: TranslationService, text: str, style: str) -> None:
+        """Store the service dependency, input text, and style."""
         super().__init__()
         self._service = service
         self._text = text
+        self._style = style
 
     def run(self) -> None:
         """Execute translation and emit the corresponding signal."""
         try:
-            result: TranslationResult = self._service.translate_text(self._text)
+            result: TranslationResult = self._service.translate_text(
+                self._text,
+                self._style,
+            )
         except (
             ConfigurationError,
             DeepSeekAPIError,

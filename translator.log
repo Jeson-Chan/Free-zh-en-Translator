@@ -4,3 +4,15 @@
 2026-04-19 21:01:49,181 | INFO | __main__ | Starting Academic Floating Translator
 2026-04-19 21:02:00,783 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh
 2026-04-19 21:02:35,882 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh
+2026-04-19 21:04:28,088 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 21:50:35,971 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh
+2026-04-19 22:23:31,084 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 22:25:03,555 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 22:25:12,105 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh style=academic
+2026-04-19 22:25:44,567 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=zh target=en style=academic
+2026-04-19 22:25:50,553 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=zh target=en style=casual
+2026-04-19 22:44:59,530 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 22:45:07,879 | INFO | translator_app.deepseek_client | Sending translation request with model=deepseek-chat source=en target=zh style=academic
+2026-04-19 23:14:29,381 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 23:16:35,500 | INFO | __main__ | Starting Academic Floating Translator
+2026-04-19 23:27:35,846 | INFO | __main__ | Starting Academic Floating Translator

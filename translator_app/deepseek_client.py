@@ -10,6 +10,7 @@ import requests
 from translator_app.constants import SYSTEM_PROMPT
 from translator_app.exceptions import ConfigurationError, DeepSeekAPIError
 from translator_app.models import AppConfig
+from translator_app.translation_style import get_style_display_name, get_style_instruction
 
 LOGGER = logging.getLogger(__name__)
 
@@ -21,7 +22,13 @@ class DeepSeekClient:
         """Store request configuration for future API calls."""
         self._config = config
 
-    def translate(self, text: str, source_language: str, target_language: str) -> str:
+    def translate(
+        self,
+        text: str,
+        source_language: str,
+        target_language: str,
+        style: str,
+    ) -> str:
         """Translate a single text block and return the model output."""
         headers = self._build_headers()
         payload = {
@@ -36,16 +43,18 @@ class DeepSeekClient:
                         text=text,
                         source_language=source_language,
                         target_language=target_language,
+                        style=style,
                     ),
                 },
             ],
         }
 
         LOGGER.info(
-            "Sending translation request with model=%s source=%s target=%s",
+            "Sending translation request with model=%s source=%s target=%s style=%s",
             self._config.model,
             source_language,
             target_language,
+            style,
         )
 
         try:
@@ -148,12 +157,17 @@ class DeepSeekClient:
         text: str,
         source_language: str,
         target_language: str,
+        style: str,
     ) -> str:
         """Build the user message sent to the model."""
+        style_instruction = get_style_instruction(style)
+        style_name = get_style_display_name(style)
         return (
             f"Source language: {source_language}\n"
             f"Target language: {target_language}\n"
-            "Please preserve formatting and academic terminology.\n\n"
+            f"Translation style: {style_name}\n"
+            f"Style instruction: {style_instruction}\n"
+            "Please preserve formatting, terminology, and paragraph structure.\n\n"
             f"{text}"
         )
 
@@ -177,4 +191,3 @@ class DeepSeekClient:
             raise DeepSeekAPIError("DeepSeek API message content is invalid.")
 
         return content.strip()
-

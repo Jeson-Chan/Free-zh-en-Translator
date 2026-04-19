@@ -1,16 +1,58 @@
 [
   {
+    "timestamp": "2026-04-19T22:45:09",
+    "source_text": "dog",
+    "translated_text": "犬",
+    "source_language": "en",
+    "target_language": "zh",
+    "style": "academic"
+  },
+  {
+    "timestamp": "2026-04-19T22:25:51",
+    "source_text": "你好",
+    "translated_text": "Hello",
+    "source_language": "zh",
+    "target_language": "en",
+    "style": "casual"
+  },
+  {
+    "timestamp": "2026-04-19T22:25:45",
+    "source_text": "你好",
+    "translated_text": "Greetings.",
+    "source_language": "zh",
+    "target_language": "en",
+    "style": "academic"
+  },
+  {
+    "timestamp": "2026-04-19T22:25:13",
+    "source_text": "Digital video inpainting techniques have been substantially improved with deep learning in recent years.",
+    "translated_text": "近年来，深度学习技术显著推动了数字视频修复方法的实质性进展。",
+    "source_language": "en",
+    "target_language": "zh",
+    "style": "academic"
+  },
+  {
+    "timestamp": "2026-04-19T21:50:37",
+    "source_text": "Dog",
+    "translated_text": "狗",
+    "source_language": "en",
+    "target_language": "zh",
+    "style": "academic"
+  },
+  {
     "timestamp": "2026-04-19T21:02:38",
     "source_text": "As shown in Fig. 1, key objects can be easily removed by the latest DL-based inpainting algorithms. Therefore, it is necessary to develop reliable forensic methods for identifying the inpainted regions in a video.",
     "translated_text": "如图1所示，关键目标能够被最新的基于深度学习的修复算法轻易移除。因此，有必要开发可靠的取证方法来识别视频中的修复区域。",
     "source_language": "en",
-    "target_language": "zh"
+    "target_language": "zh",
+    "style": "academic"
   },
   {
     "timestamp": "2026-04-19T21:02:03",
     "source_text": "DeepSeek API key is still the placeholder value. Pleaseupdate config.json or Settings.",
     "translated_text": "DeepSeek API密钥仍为占位符值。请更新config.json文件或设置。",
     "source_language": "en",
-    "target_language": "zh"
+    "target_language": "zh",
+    "style": "academic"
   }
 ]

@@ -55,3 +55,15 @@ def test_build_http_error_for_401_is_user_friendly() -> None:
     assert "401 Unauthorized" in str(error)
     assert "Authorization Required" in str(error)
 
+
+def test_build_user_message_includes_selected_style_instruction() -> None:
+    """Embed the requested translation style in the user message."""
+    message = DeepSeekClient._build_user_message(
+        text="Hello world",
+        source_language="en",
+        target_language="zh",
+        style="business",
+    )
+
+    assert "Translation style: Business" in message
+    assert "professional business tone" in message

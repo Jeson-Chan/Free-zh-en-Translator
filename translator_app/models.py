@@ -12,6 +12,7 @@ from translator_app.constants import (
     DEFAULT_TEMPERATURE,
     DEFAULT_TIMEOUT_SECONDS,
 )
+from translator_app.translation_style import DEFAULT_TRANSLATION_STYLE
 
 
 @dataclass(slots=True)
@@ -58,6 +59,7 @@ class HistoryEntry:
     translated_text: str
     source_language: str
     target_language: str
+    style: str = DEFAULT_TRANSLATION_STYLE
 
     @classmethod
     def from_dict(cls, payload: dict[str, Any]) -> "HistoryEntry":
@@ -68,6 +70,7 @@ class HistoryEntry:
             translated_text=str(payload["translated_text"]),
             source_language=str(payload["source_language"]),
             target_language=str(payload["target_language"]),
+            style=str(payload.get("style", DEFAULT_TRANSLATION_STYLE)),
         )
 
     def to_dict(self) -> dict[str, str]:
@@ -78,6 +81,7 @@ class HistoryEntry:
             "translated_text": self.translated_text,
             "source_language": self.source_language,
             "target_language": self.target_language,
+            "style": self.style,
         }
 
 
@@ -90,4 +94,4 @@ class TranslationResult:
     source_language: str
     target_language: str
     model: str
-
+    style: str
