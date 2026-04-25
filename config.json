@@ -1,7 +1,7 @@
 {
   "api_key": "sk-7a3ea9e32de34e69aab7f0dbb0e67d5e",
   "api_url": "https://api.deepseek.com/chat/completions",
-  "model": "deepseek-chat",
+  "model": "deepseek-v4-pro",
   "hotkey": "<ctrl>+t",
   "timeout_seconds": 45,
   "temperature": 0.2

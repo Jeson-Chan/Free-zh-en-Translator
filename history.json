@@ -1,10 +1,18 @@
 [
   {
-    "timestamp": "2026-04-19T23:53:12",
-    "source_text": "Abstract—Digital video inpainting techniques have been substantially improved with deep learning in recent years. Deep inpainting can fill missing regions with plausible realistic contents. Although the inpainting is originally designed to repair damaged areas, it can also be used as malicious manipulation to remove important objects for creating false scenes and facts. As such it is significant to identify inpainted regions blindly.",
-    "translated_text": "摘要——近年来，深度学习技术显著推动了数字视频修复方法的发展。深度修复能够以合理的逼真内容填充缺失区域。尽管修复技术最初旨在修复受损区域，但其同样可被恶意用于移除关键物体以伪造场景与事实。因此，对修复区域进行盲检测具有重要研究意义。",
-    "source_language": "en",
-    "target_language": "zh",
+    "timestamp": "2026-04-25T23:23:08",
+    "source_text": "# 学术英文翻译器\n\n一款基于Python和PyQt5构建的桌面浮动翻译工具。该工具专注于中英文学术或专业文本的翻译，并通过兼容OpenAI的聊天补全格式调用DeepSeek API。\n\n## 功能特性\n\n- 集成DeepSeek API，配备学术翻译系统提示词\n- 自动识别中英文语言方向\n- 支持剪贴板粘贴功能\n\n## 快速开始\n\n1. 配置本地Python环境或虚拟环境。\n\n   前往Python官方网站：`https://www.python.org/`\n\n   选择3.12版本并下载安装。\n\n2. 安装依赖项：\n\n   运行以下指令\n\n```bash\npip install -r requirements.txt\n```\n\n## 运行程序\n\n```bash\npython main.py\n```\n\n## 翻译模型配置\n\n以Deepseek为例，进入Deepseek开放平台：`https://platform.deepseek.com/usage` \n\n充值额度，获取 **api key**（sk-xxx...)\n\n**api url**\t`https://api.deepseek.com/chat/completions`\n\n选择模型，建议使用最新发布的deepseek v4模型：\n\n**model**\n\n- `deepseek-v4-flash`\n- `deepseek-v4-pro`\n\n如需使用其他兼容模型，可在设置对话框中更改模型参数。\n\n打开**Settings**，将以上参数分别填写到**API Key ，API URL， model**\n\n示例：\n\n> | API Key     | `sk-xxxxxx`                                 |\n> | ----------- | ------------------------------------------- |\n> | **API URL** | `https://api.deepseek.com/chat/completions` |\n> | **model**   | `deepseek-v4-flash`                         |\n\n\n\n## **注意事项**\n\n- **全局热键格式采用`pynput`语法，例如`<ctrl>+t`。**\n- **部分操作系统可能需要为全局热键授予辅助功能权限。**\n- **翻译历史记录存储于`history.json`文件中。**\n- **应用程序日志存储于`translator.log`文件中。**",
+    "translated_text": "# Academic English Translator\n\nA desktop floating translation tool built with Python and PyQt5. The tool focuses on the translation of Chinese–English academic or professional texts and invokes the DeepSeek API using the OpenAI-compatible chat completion format.\n\n## Features\n\n- Integrates the DeepSeek API with a system prompt for academic translation  \n- Automatically detects the language direction between Chinese and English  \n- Supports clipboard paste functionality  \n\n## Quick Start\n\n1. Configure a local Python environment or virtual environment.  \n\n   Visit the official Python website: `https://www.python.org/`  \n\n   Select version 3.12, download, and install.\n\n2. Install dependencies:  \n\n   Run the following command  \n\n```bash\npip install -r requirements.txt\n```\n\n## Running the Program\n\n```bash\npython main.py\n```\n\n## Translation Model Configuration\n\nTaking DeepSeek as an example, go to the DeepSeek open platform: `https://platform.deepseek.com/usage`  \n\nTop up your balance and obtain an **API key** (sk-xxx...)\n\n**API URL** `https://api.deepseek.com/chat/completions`\n\nSelect a model; it is recommended to use the latest DeepSeek v4 models:\n\n**model**\n\n- `deepseek-v4-flash`\n- `deepseek-v4-pro`\n\nIf you need to use other compatible models, you can change the model parameters in the settings dialog.\n\nOpen **Settings** and fill in the corresponding parameters for **API Key**, **API URL**, and **model**.\n\nExample:\n\n> | API Key     | `sk-xxxxxx`                                 |\n> | ----------- | ------------------------------------------- |\n> | **API URL** | `https://api.deepseek.com/chat/completions` |\n> | **model**   | `deepseek-v4-flash`                         |\n\n## **Notes**\n\n- **The global hotkey format uses `pynput` syntax, for example `<ctrl>+t`.**  \n- **Some operating systems may require granting accessibility permissions for global hotkeys.**  \n- **Translation history is stored in the `history.json` file.**  \n- **Application logs are stored in the `translator.log` file.**",
+    "source_language": "zh",
+    "target_language": "en",
+    "style": "academic"
+  },
+  {
+    "timestamp": "2026-04-25T22:57:21",
+    "source_text": "新的模型deepseek v4发布了",
+    "translated_text": "The new DeepSeek V4 model has been released.",
+    "source_language": "zh",
+    "target_language": "en",
     "style": "academic"
   }
 ]

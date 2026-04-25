@@ -1,86 +1,65 @@
-# Academic Floating Translator
+# Academic English Translator
 
-A desktop floating translation tool built with Python and PyQt5. It targets Chinese and English academic or professional text and uses the DeepSeek API through the OpenAI-compatible chat completions format.
+A desktop floating translation tool built with Python and PyQt5. The tool focuses on the translation of Chinese–English academic or professional texts and invokes the DeepSeek API using the OpenAI-compatible chat completion format.
 
 ## Features
 
-- Floating always-on-top window with drag support
-- Source input area, translate button, and result display
-- DeepSeek API integration with an academic translation system prompt
-- Auto language direction selection between Chinese and English
-- Clipboard paste support
-- Click translation result to copy it to the clipboard
-- Recent history storage for the latest 10 translations
-- Global hotkey support for show or hide
-- First-run settings dialog for DeepSeek API configuration
+- Integrates the DeepSeek API with a system prompt for academic translation  
+- Automatically detects the language direction between Chinese and English  
+- Supports clipboard paste functionality  
 
-## Project Structure
+## Quick Start
 
-```text
-d:\MyProject
-|-- main.py
-|-- README.md
-|-- requirements.txt
-|-- config.example.json
-|-- translator_app
-|   |-- __init__.py
-|   |-- config_manager.py
-|   |-- constants.py
-|   |-- deepseek_client.py
-|   |-- exceptions.py
-|   |-- floating_window.py
-|   |-- history_manager.py
-|   |-- hotkey_manager.py
-|   |-- language.py
-|   |-- logging_config.py
-|   |-- models.py
-|   |-- settings_dialog.py
-|   |-- translation_service.py
-|   `-- worker.py
-`-- tests
-    `-- test_language.py
-```
+1. Configure a **local Python environment or virtual environment**.  
 
-## Setup
+   Visit the official Python website: `https://www.python.org/`  
 
-1. Create and activate a Python virtual environment.
-2. Install dependencies:
+   Select version **3.12**, download, and install.
+
+2. Install dependencies:  
+
+   Run the following command  
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Copy `config.example.json` to `config.json`, or let the app prompt you on first launch.
-4. Put your DeepSeek API key in `config.json`.
-
-## Run
+## Running the Program
 
 ```bash
 python main.py
 ```
 
-## DeepSeek Configuration
+## Translation Model Configuration
 
-The application sends requests to:
+Taking DeepSeek as an example, go to the DeepSeek open platform: `https://platform.deepseek.com/usage`  
 
-- `https://api.deepseek.com/chat/completions`
+Top up your balance and obtain an **API key** (sk-xxx...)
 
-Default model:
+**API URL** `https://api.deepseek.com/chat/completions`
 
-- `deepseek-chat`
+Select a model; it is recommended to use the latest DeepSeek v4 models:
 
-You can change the model in the settings dialog if you want to use another compatible model such as `deepseek-reasoner`.
+**model**
 
-## Notes
+- `deepseek-v4-flash`
+- `deepseek-v4-pro`
 
-- The global hotkey format uses `pynput` syntax, for example `<ctrl>+t`.
-- Some operating systems may require accessibility permissions for global hotkeys.
-- Translation history is stored in `history.json`.
-- Application logs are stored in `translator.log`.
+If you need to use other compatible models, you can change the model parameters in the settings dialog.
 
-## Test
+Open **Settings** and fill in the corresponding parameters for **API Key**, **API URL**, and **model**.
 
-```bash
-pytest
-```
+Example:
+
+> | API Key     | `sk-xxxxxx...`                              |
+> | ----------- | ------------------------------------------- |
+> | **API URL** | `https://api.deepseek.com/chat/completions` |
+> | **model**   | `deepseek-v4-flash`                         |
+
+## **Notes**
+
+- The global hotkey format uses `pynput` syntax, for example `<ctrl>+t`.  
+- Some operating systems may require granting accessibility permissions for global hotkeys.  
+- Translation history is stored in the `history.json` file.  
+- Application logs are stored in the `translator.log` file.
 
