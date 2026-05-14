@@ -20,7 +20,7 @@
 
 3. 安装依赖项：
 
-   运行以下指令
+   在项目目录下运行以下指令
 
 ```bash
 pip install -r requirements.txt
